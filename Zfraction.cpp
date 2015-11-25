@@ -24,12 +24,23 @@ Zfraction& Zfraction::operator+=(Zfraction const& frac) {
     m_den = frac.m_den * m_den;
     return *this;
 }
+Zfraction& Zfraction::operator*=(Zfraction const& frac){
+    m_num *= frac.m_num;
+    m_den *= frac.m_den ;
+    return *this;
+ }
+
+ bool Zfraction::estEgal(Zfraction const &frac) const {
+     return ((m_num == frac.m_num) && (m_den == frac.m_den));
+ }
 
 void Zfraction::afficherFrac(ostream& flux) const{
     flux << m_num << "/" << m_den << " ";
 }
 
 Zfraction::Zfraction(const Zfraction& orig) {
+    m_den = orig.m_den;
+    m_num = orig.m_num;
 }
 
 Zfraction::~Zfraction() {

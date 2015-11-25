@@ -44,10 +44,19 @@ Zfraction operator+(Zfraction const& a, Zfraction const&b) {
     copie += b;
     return copie;
 }
+Zfraction operator*(Zfraction const& a, Zfraction const&b) {
+    Zfraction copie(a);
+    copie *= b;
+    return copie;
+}
 
 ostream& operator<<(ostream& flux, Zfraction const& frac) {
     frac.afficherFrac(flux);
     return flux;
+}
+
+bool operator==(Zfraction const &a, Zfraction const &b){
+    return a.estEgal(b);
 }
 
 int main(int argc, char** argv) {
@@ -55,13 +64,14 @@ int main(int argc, char** argv) {
     Zfraction c(0,1),d;
     c.afficherFrac(cout);
     b.afficherFrac(cout);
-    c = a + b;
+    c = a * b;
     a.afficherFrac(cout);
     
     
     cout << a << "+" << b << "=" << c << endl;
     c.afficherFrac(cout);
     a.afficherFrac(cout);
+    cout << (a == a);
     return 0;
 }
 

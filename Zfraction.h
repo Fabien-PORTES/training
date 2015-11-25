@@ -21,7 +21,9 @@ public:
     Zfraction(int num);
     Zfraction(const Zfraction& orig);
     Zfraction& operator+=(Zfraction const& frac);
+    Zfraction& operator*=(Zfraction const& frac);
     void afficherFrac(std::ostream &flux) const;
+    bool estEgal(Zfraction const &frac) const;
     virtual ~Zfraction();
 private:
     int m_num;
