@@ -14,14 +14,14 @@
 #include <string>
 #include <cstdlib>
 #include "Personnage.h"
+#include "Zfraction.h"
 using namespace std;
 
 /*
  * 
  */
-int main(int argc, char** argv) {
-
-        //Création des personnages
+void aff_personnage() {
+    //Création des personnages
     Personnage david, goliath("Épée aiguisée", 20);
  
     //Au combat !
@@ -36,8 +36,32 @@ int main(int argc, char** argv) {
     cout << "David" << endl;
     david.afficherEtat();
     cout << endl << "Goliath" << endl;
-    goliath.afficherEtat();
- 
+    goliath.afficherEtat(); 
+}
+
+Zfraction operator+(Zfraction const& a, Zfraction const&b) {
+    Zfraction copie(a);
+    copie += b;
+    return copie;
+}
+
+ostream& operator<<(ostream& flux, Zfraction const& frac) {
+    frac.afficherFrac(flux);
+    return flux;
+}
+
+int main(int argc, char** argv) {
+    Zfraction a(4,5), b(2,1);
+    Zfraction c(0,1),d;
+    c.afficherFrac(cout);
+    b.afficherFrac(cout);
+    c = a + b;
+    a.afficherFrac(cout);
+    
+    
+    cout << a << "+" << b << "=" << c << endl;
+    c.afficherFrac(cout);
+    a.afficherFrac(cout);
     return 0;
 }
 
